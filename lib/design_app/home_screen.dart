@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/Theme/colors/app_colors.dart';
+import 'package:new_project/design_app/app_back_ground.dart';
 import 'package:new_project/design_app/body_widgets/hadeth_tab.dart';
 
 import 'body_widgets/quran_tab.dart';
@@ -23,18 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/main_background.png"),
-              fit: BoxFit.fill)),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Islami",
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ),
+    return AppBackground(
         body: tabs[selectedIndex],
         bottomNavigationBar: Theme(
           data: Theme.of(context)
@@ -62,8 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: ImageIcon(AssetImage("assets/images/radio.png")),
                     label: "radio"),
               ]),
-        ),
-      ),
-    );
+        ));
   }
 }

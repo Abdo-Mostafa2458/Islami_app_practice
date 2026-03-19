@@ -7,6 +7,8 @@ class QuranHaderImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-        child: Image.asset("assets/images/quran_header_icn.png"));
+        child: Image.asset(
+          "assets/images/quran_header_icn.png",
+        ));
   }
 }

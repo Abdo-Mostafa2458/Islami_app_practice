@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../Theme/colors/app_colors.dart';
+import '../../Theme/colors/app_colors.dart';
 
-class CustomQuranBody extends StatelessWidget {
-  const CustomQuranBody({super.key});
+class CustomQuranTitle extends StatelessWidget {
+  String verse;
+  String surah;
+
+  CustomQuranTitle({required this.surah, required this.verse});
 
   @override
   Widget build(BuildContext context) {
@@ -12,24 +15,29 @@ class CustomQuranBody extends StatelessWidget {
         Positioned(
           left: 205,
           child: Container(
-            height: 50,
+            height: 60,
             width: 4,
             color: AppColorsLight.primaryColor,
           ),
         ),
         Column(
           children: [
+            Divider(
+              color: AppColorsLight.primaryColor,
+              thickness: 3,
+              height: 3,
+            ),
             Container(
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "verse",
+                    verse,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Text(
-                    "surah",
+                    surah,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
