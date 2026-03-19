@@ -30,7 +30,7 @@ class QuranDetails extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
               margin:
-                  EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 200),
+                  EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 150),
               child: Card(
                 color: Colors.white,
                 child: Padding(
