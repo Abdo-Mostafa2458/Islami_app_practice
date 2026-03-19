@@ -32,7 +32,7 @@ class QuranDetails extends StatelessWidget {
               margin:
                   EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 150),
               child: Card(
-                color: Colors.white,
+                color: AppColorsLight.whiteColor,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
@@ -50,7 +50,7 @@ class QuranDetails extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(right: 50),
                             child: CircleAvatar(
-                                backgroundColor: Colors.black,
+                                backgroundColor: AppColorsLight.blackColor,
                                 radius: 15,
                                 child: Icon(
                                   Icons.play_arrow,
