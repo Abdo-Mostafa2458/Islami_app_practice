@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:new_project/AppRoutes/AppRoutes.dart';
+import 'package:new_project/Theme/colors/app_colors.dart';
 import 'package:new_project/design_app/Widgets_Quran_tab/custom_quran_body.dart';
 import 'package:new_project/design_app/Widgets_Quran_tab/custom_quran_title.dart';
 import 'package:new_project/design_app/Widgets_Quran_tab/quran_hader_image.dart';
@@ -25,11 +26,18 @@ class _QuranTabState extends State<QuranTab> {
     return Column(
       children: [
         QuranHaderImage(),
-        CustomQuranTitle(verse: "verse", surah: "surah"),
-        Expanded(
-          child: Sura.isEmpty
-              ? CircularProgressIndicator()
-              : ListView.builder(
+        CustomQuranTitle(verse: "verse", surah: "sura"),
+        Sura.isEmpty
+            ? Center(
+                heightFactor: 10,
+                child: CircularProgressIndicator(
+                  color: AppColorsLight.primaryColor,
+                ))
+            : Expanded(
+                child: ListView.builder(
+                  key: const PageStorageKey<String>("page"),
+                  shrinkWrap: true,
+                  physics: const RangeMaintainingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {

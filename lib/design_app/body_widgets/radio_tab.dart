@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:new_project/Theme/colors/app_colors.dart';
 
@@ -34,7 +35,9 @@ class RadioTab extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.skip_previous,
+                context.locale.languageCode == "en"
+                    ? Icons.skip_previous
+                    : Icons.skip_next,
                 color: AppColorsLight.primaryColor,
                 size: 40,
               ),
@@ -42,7 +45,9 @@ class RadioTab extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.arrow_right_rounded,
+                context.locale.languageCode == "en"
+                    ? Icons.arrow_right_rounded
+                    : Icons.arrow_left_rounded,
                 color: AppColorsLight.primaryColor,
                 size: 100,
               ),
@@ -50,7 +55,9 @@ class RadioTab extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.skip_next,
+                context.locale.languageCode == "en"
+                    ? Icons.skip_next
+                    : Icons.skip_previous,
                 color: AppColorsLight.primaryColor,
                 size: 40,
               ),

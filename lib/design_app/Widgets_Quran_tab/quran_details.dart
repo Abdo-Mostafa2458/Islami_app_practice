@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:new_project/Theme/colors/app_colors.dart';
 import 'package:new_project/design_app/app_back_ground.dart';
+import 'package:new_project/design_app/resable_data_details_widget.dart';
 
 import '../body_widgets/quran_tab.dart';
 
@@ -16,7 +17,10 @@ class QuranDetails extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                child: CircularProgressIndicator(),
+                heightFactor: 10,
+                child: CircularProgressIndicator(
+                  color: AppColorsLight.primaryColor,
+                ),
               );
             }
             if (snapshot.hasError) {
@@ -26,64 +30,57 @@ class QuranDetails extends StatelessWidget {
             }
             List<String> AyatSura = snapshot.data!;
 
-            return Container(
-              height: double.infinity,
-              width: double.infinity,
-              margin:
-                  EdgeInsets.only(right: 40, left: 40, top: 20, bottom: 150),
-              child: Card(
-                color: AppColorsLight.whiteColor,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(left: 100),
-                              child: Text(
-                                args.suraName,
-                                textAlign: TextAlign.center,
-                              )),
-                          Container(
-                            margin: EdgeInsets.only(right: 50),
-                            child: CircleAvatar(
-                                backgroundColor: AppColorsLight.blackColor,
-                                radius: 15,
-                                child: Icon(
-                                  Icons.play_arrow,
-                                  color: Colors.white,
-                                  size: 30,
-                                )),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        color: AppColorsLight.primaryColor,
-                        endIndent: 30,
-                        indent: 30,
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemBuilder: (context, index) {
-                            return Text(
-                              "${AyatSura[index]}",
+            return ResableDataDetailsWidget(
+              widgetOnCard: Padding(
+                padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      textDirection: TextDirection.ltr,
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(left: 100),
+                            child: Text(
+                              args.suraName,
                               textAlign: TextAlign.center,
-                            );
-                          },
-                          itemCount: AyatSura.length,
-                          scrollDirection: Axis.vertical,
+                            )),
+                        Container(
+                          margin: EdgeInsets.only(right: 50),
+                          child: CircleAvatar(
+                              backgroundColor: AppColorsLight.blackColor,
+                              radius: 15,
+                              child: Icon(
+                                Icons.play_arrow,
+                                color: Colors.white,
+                                size: 30,
+                              )),
                         ),
-                      )
-                    ],
-                  ),
+                      ],
+                    ),
+                    Divider(
+                      color: AppColorsLight.primaryColor,
+                      thickness: 2,
+                      endIndent: 30,
+                      indent: 30,
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Text(
+                            textDirection: TextDirection.rtl,
+                            "${AyatSura[index]}(${index + 1})",
+                            textAlign: TextAlign.center,
+                          );
+                        },
+                        itemCount: AyatSura.length,
+                        scrollDirection: Axis.vertical,
+                      ),
+                    )
+                  ],
                 ),
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
               ),
+              colorCard: AppColorsLight.whiteColor,
             );
           }),
     );

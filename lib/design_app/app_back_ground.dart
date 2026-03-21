@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:new_project/generated/locale_keys.g.dart';
 
 class AppBackground extends StatelessWidget {
   final Widget? body;
@@ -22,7 +24,7 @@ class AppBackground extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Islami",
+            LocaleKeys.title.tr(),
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),

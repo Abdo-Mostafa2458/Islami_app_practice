@@ -38,17 +38,21 @@ class _SebhaTabState extends State<SebhaTab> {
                   });
                 },
                 child: Container(
-                    margin: EdgeInsets.only(top: 38),
-                    child: AnimatedRotation(
-                        turns: turns,
-                        duration: const Duration(milliseconds: 200),
-                        child: Image.asset(
-                          "assets/images/body of seb7a_light.png",
-                        ))),
+                  margin: EdgeInsets.only(top: 38),
+                  child: AnimatedRotation(
+                    turns: turns,
+                    duration: const Duration(milliseconds: 200),
+                    child: Image.asset(
+                      "assets/images/body of seb7a_light.png",
+                    ),
+                  ),
+                ),
               ),
-              Container(
-                  margin: EdgeInsets.only(left: 150),
-                  child: Image.asset("assets/images/head of seb7a_light.png")),
+              Positioned(
+                top: 0,
+                left: 150,
+                child: Image.asset("assets/images/head of seb7a_light.png"),
+              ),
             ],
           ),
           Text(
