@@ -35,4 +35,37 @@ class AppTheme {
         unselectedItemColor: AppColorsLight.whiteColor,
         selectedItemColor: AppColorsLight.blackColor),
   );
+  static final ThemeData appThemeDark = ThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent,
+      centerTitle: true,
+      elevation: 0,
+    ),
+    scaffoldBackgroundColor: Colors.transparent,
+    textTheme: TextTheme(
+        titleMedium: TextStyle(
+            color: AppColorsDark.whiteColor,
+            fontSize: 30,
+            fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(
+            color: AppColorsDark.whiteColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 25),
+        bodySmall: TextStyle(
+            color: AppColorsDark.whiteColor,
+            fontWeight: FontWeight.w400,
+            fontSize: 25)),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColorsDark.DarkColor,
+        showUnselectedLabels: true,
+        unselectedIconTheme:
+            IconThemeData(color: AppColorsDark.whiteColor, size: 40),
+        // unselectedLabelStyle: TextStyle(
+        //  color: Colors.white
+        // ),
+        selectedIconTheme:
+            IconThemeData(color: AppColorsDark.primaryGoldenColor, size: 50),
+        unselectedItemColor: AppColorsDark.whiteColor,
+        selectedItemColor: AppColorsDark.primaryGoldenColor),
+  );
 }

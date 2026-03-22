@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/provider/app_provider_notifier.dart';
+import 'package:provider/provider.dart';
 
 import '../../Theme/colors/app_colors.dart';
 
@@ -10,6 +12,7 @@ class CustomQuranTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProviderNotifier>(context);
     return Stack(
       children: [
         Positioned(
@@ -17,13 +20,17 @@ class CustomQuranTitle extends StatelessWidget {
           child: Container(
             height: 60,
             width: 4,
-            color: AppColorsLight.primaryColor,
+            color: provider.isLight()
+                ? AppColorsLight.primaryColor
+                : AppColorsDark.primaryGoldenColor,
           ),
         ),
         Column(
           children: [
             Divider(
-              color: AppColorsLight.primaryColor,
+              color: provider.isLight()
+                  ? AppColorsLight.primaryColor
+                  : AppColorsDark.primaryGoldenColor,
               thickness: 3,
               height: 3,
             ),
@@ -31,6 +38,8 @@ class CustomQuranTitle extends StatelessWidget {
               height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                textDirection:
+                    provider.isLight() ? TextDirection.rtl : TextDirection.ltr,
                 children: [
                   Text(
                     verse,
@@ -44,7 +53,9 @@ class CustomQuranTitle extends StatelessWidget {
               ),
             ),
             Divider(
-              color: AppColorsLight.primaryColor,
+              color: provider.isLight()
+                  ? AppColorsLight.primaryColor
+                  : AppColorsDark.primaryGoldenColor,
               thickness: 3,
               height: 3,
             ),

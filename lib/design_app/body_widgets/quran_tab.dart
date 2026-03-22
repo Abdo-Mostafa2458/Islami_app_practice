@@ -1,56 +1,52 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:new_project/AppRoutes/AppRoutes.dart';
 import 'package:new_project/Theme/colors/app_colors.dart';
 import 'package:new_project/design_app/Widgets_Quran_tab/custom_quran_body.dart';
 import 'package:new_project/design_app/Widgets_Quran_tab/custom_quran_title.dart';
 import 'package:new_project/design_app/Widgets_Quran_tab/quran_hader_image.dart';
+import 'package:new_project/generated/locale_keys.g.dart';
+import 'package:new_project/provider/app_provider_notifier.dart';
+import 'package:provider/provider.dart';
 
-class QuranTab extends StatefulWidget {
-  @override
-  State<QuranTab> createState() => _QuranTabState();
-}
-
-class _QuranTabState extends State<QuranTab> {
-  List<String> Sura = [];
-  List<String> verses = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
+class QuranTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProviderNotifier>(context);
+    if (provider.Sura.isEmpty && provider.isLoadingQuran) {
+      provider.loadDataQuran();
+    }
     return Column(
       children: [
         QuranHaderImage(),
-        CustomQuranTitle(verse: "verse", surah: "sura"),
-        Sura.isEmpty
+        CustomQuranTitle(
+            verse: LocaleKeys.verses.tr(), surah: LocaleKeys.sura.tr()),
+        provider.Sura.isEmpty
             ? Center(
                 heightFactor: 10,
                 child: CircularProgressIndicator(
-                  color: AppColorsLight.primaryColor,
+                  color: provider.isLight()
+                      ? AppColorsLight.primaryColor
+                      : AppColorsDark.primaryGoldenColor,
                 ))
             : Expanded(
                 child: ListView.builder(
                   key: const PageStorageKey<String>("page"),
                   shrinkWrap: true,
-                  physics: const RangeMaintainingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
+            physics: const RangeMaintainingScrollPhysics(),
+            itemBuilder: (context, index) {
+              return GestureDetector(
                         onTap: () {
-                          print(index);
-
                           Navigator.pushNamed(context, AppRoutes.quranDetails,
                               arguments: QuranDetailsBottom(
-                                  suraName: Sura[index], indexSura: index));
+                                  suraName: provider.Sura[index],
+                                  indexSura: index));
                         },
                         child: CustomQuranBody(
-                            verse: verses[index], surah: Sura[index]));
+                            verse: provider.verses[index],
+                            surah: provider.Sura[index]));
                   },
-                  itemCount: Sura.length,
+                  itemCount: provider.Sura.length,
                 ),
         )
 
@@ -62,18 +58,6 @@ class _QuranTabState extends State<QuranTab> {
         // ),
       ],
     );
-  }
-
-  Future<void> loadData() async {
-    String dataSura =
-        await rootBundle.loadString("assets/files/qura_sura_name.txt");
-    String dataVerses =
-        await rootBundle.loadString("assets/files/verses_number.txt");
-    verses = dataVerses.trim().split("\n");
-    Sura = dataSura.trim().split("\n");
-    setState(() {});
-    // verses.add(dataVerses);
-    // Sura.add(dataSura);
   }
 }
 

@@ -6,5 +6,11 @@
   "sebha": "sebha",
   "radio": "radio",
   "hadeth": "Hadeth",
-  "settings": "settings"
+  "settings": "settings",
+  "English": "English",
+  "Arabic": "Arabic",
+  "Language": "Language",
+  "Theme": "Theme",
+  "Light": "Light",
+  "Dark": "Dark"
 }

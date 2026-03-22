@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:new_project/Theme/colors/app_colors.dart';
+import 'package:new_project/provider/app_provider_notifier.dart';
+import 'package:provider/provider.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppProviderNotifier>(context);
     return Column(
       children: [
         Spacer(
@@ -38,7 +41,9 @@ class RadioTab extends StatelessWidget {
                 context.locale.languageCode == "en"
                     ? Icons.skip_previous
                     : Icons.skip_next,
-                color: AppColorsLight.primaryColor,
+                color: provider.isLight()
+                    ? AppColorsLight.primaryColor
+                    : AppColorsDark.primaryGoldenColor,
                 size: 40,
               ),
             ),
@@ -48,7 +53,9 @@ class RadioTab extends StatelessWidget {
                 context.locale.languageCode == "en"
                     ? Icons.arrow_right_rounded
                     : Icons.arrow_left_rounded,
-                color: AppColorsLight.primaryColor,
+                color: provider.isLight()
+                    ? AppColorsLight.primaryColor
+                    : AppColorsDark.primaryGoldenColor,
                 size: 100,
               ),
             ),
@@ -58,7 +65,9 @@ class RadioTab extends StatelessWidget {
                 context.locale.languageCode == "en"
                     ? Icons.skip_next
                     : Icons.skip_previous,
-                color: AppColorsLight.primaryColor,
+                color: provider.isLight()
+                    ? AppColorsLight.primaryColor
+                    : AppColorsDark.primaryGoldenColor,
                 size: 40,
               ),
             ),

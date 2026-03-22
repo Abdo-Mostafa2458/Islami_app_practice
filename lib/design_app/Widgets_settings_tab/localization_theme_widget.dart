@@ -5,7 +5,9 @@ import 'package:new_project/generated/locale_keys.g.dart';
 import 'package:new_project/provider/app_provider_notifier.dart';
 import 'package:provider/provider.dart';
 
-class LocalizationLanguageWidget extends StatelessWidget {
+class LocalizationThemeWidget extends StatelessWidget {
+  const LocalizationThemeWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppProviderNotifier>(context);
@@ -19,18 +21,18 @@ class LocalizationLanguageWidget extends StatelessWidget {
         children: [
           GestureDetector(
               onTap: () {
-                provider.change_languageV2(context);
+                provider.changeThemeApp(ThemeMode.light);
               },
-              child: context.locale.languageCode == "en"
-                  ? selectedItem(context, LocaleKeys.English.tr())
-                  : UnSelectedItem(context, LocaleKeys.English.tr())),
+              child: provider.themeMode == ThemeMode.light
+                  ? selectedItemTheme(context, LocaleKeys.Light.tr())
+                  : UnSelectedItemTheme(context, LocaleKeys.Light.tr())),
           GestureDetector(
               onTap: () {
-                provider.change_languageV2(context);
+                provider.changeThemeApp(ThemeMode.dark);
               },
-              child: context.locale.languageCode == "ar"
-                  ? selectedItem(context, LocaleKeys.Arabic.tr())
-                  : UnSelectedItem(context, LocaleKeys.Arabic.tr())),
+              child: provider.themeMode == ThemeMode.dark
+                  ? selectedItemTheme(context, LocaleKeys.Dark.tr())
+                  : UnSelectedItemTheme(context, LocaleKeys.Dark.tr())),
           // UnselectedItem(context),
         ],
       ),
@@ -38,7 +40,7 @@ class LocalizationLanguageWidget extends StatelessWidget {
   }
 }
 
-Widget selectedItem(BuildContext context, String text) {
+Widget selectedItemTheme(BuildContext context, String text) {
   return Padding(
     padding: const EdgeInsets.all(14.0),
     child: Row(
@@ -61,7 +63,7 @@ Widget selectedItem(BuildContext context, String text) {
   );
 }
 
-Widget UnSelectedItem(BuildContext context, String text) {
+Widget UnSelectedItemTheme(BuildContext context, String text) {
   return Padding(
     padding: const EdgeInsets.all(14.0),
     child: Row(
