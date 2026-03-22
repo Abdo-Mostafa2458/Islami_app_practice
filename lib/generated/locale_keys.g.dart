@@ -11,4 +11,10 @@ abstract class LocaleKeys {
   static const radio = 'radio';
   static const hadeth = 'hadeth';
   static const settings = 'settings';
+  static const English = 'English';
+  static const Arabic = 'Arabic';
+  static const Language = 'Language';
+  static const Theme = 'Theme';
+  static const Light = 'Light';
+  static const Dark = 'Dark';
 }

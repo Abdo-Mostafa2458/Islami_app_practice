@@ -22,7 +22,13 @@ class CodegenLoader extends AssetLoader {
     "sebha": "التسبيح",
     "radio": "الراديو",
     "hadeth": "الأحاديث",
-    "settings": "اعدادات"
+    "settings": "اعدادات",
+    "English": "الأنجليزية",
+    "Arabic": "العربية",
+    "Language": "اللغة",
+    "Theme": "المود",
+    "Light": "فاتح",
+    "Dark": "غامق"
   };
   static const Map<String, dynamic> _en = {
     "title": "Islami",
@@ -32,7 +38,13 @@ class CodegenLoader extends AssetLoader {
     "sebha": "sebha",
     "radio": "radio",
     "hadeth": "Hadeth",
-    "settings": "settings"
+    "settings": "settings",
+    "English": "English",
+    "Arabic": "Arabic",
+    "Language": "Language",
+    "Theme": "Theme",
+    "Light": "Light",
+    "Dark": "Dark"
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "ar": _ar,
